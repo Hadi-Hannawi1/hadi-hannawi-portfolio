@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ChevronDown, ChevronUp, Lock, RefreshCw } from 'lucide-react';
+import { ExternalLink, ChevronDown, ChevronUp, Lock, RefreshCw } from 'lucide-react';
 import { Project } from '../types';
 
 interface Props {
@@ -64,6 +64,14 @@ const ProjectCard: React.FC<Props> = ({ project, index }) => {
     return () => { isMounted = false; };
   }, [project.imageUrl]);
 
+  const handleImageClick = () => {
+    if (project.liveUrl) {
+      window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      setIsExpanded(!isExpanded);
+    }
+  };
+
   return (
     <motion.div
       layout
@@ -74,7 +82,11 @@ const ProjectCard: React.FC<Props> = ({ project, index }) => {
       className="group w-full bg-[#0a0a0a] border border-neutral-900 rounded-sm overflow-hidden hover:border-neutral-700 transition-colors flex flex-col"
     >
       {/* --- IMAGE / MEDIA SECTION --- */}
-      <div className="relative w-full aspect-video overflow-hidden bg-neutral-900 cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+      <div 
+        className="relative w-full aspect-video overflow-hidden bg-neutral-900 cursor-pointer" 
+        onClick={handleImageClick}
+        title={project.liveUrl ? "Visit Live Site" : "View Details"}
+      >
         
         {/* 1. SUCCESS STATE */}
         {status === 'loaded' && currentSrc && (
@@ -212,30 +224,17 @@ const ProjectCard: React.FC<Props> = ({ project, index }) => {
                     href={project.liveUrl} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex-1 py-3 bg-white text-black font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
+                    className="w-full py-3 bg-white text-black font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
                 >
                     <ExternalLink size={14} /> Live Demo
                 </a>
             ) : (
-                <button disabled className="flex-1 py-3 bg-neutral-900 text-neutral-500 font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 cursor-not-allowed">
+                <button disabled className="w-full py-3 bg-neutral-900 text-neutral-500 font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 cursor-not-allowed">
                     <Lock size={14} /> Private
                 </button>
             )}
-
-            {project.repoUrl ? (
-                <a 
-                    href={project.repoUrl} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex-1 py-3 border border-neutral-800 text-white font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-900 transition-colors"
-                >
-                    <Github size={14} /> Code
-                </a>
-            ) : (
-                <button disabled className="flex-1 py-3 border border-neutral-900 text-neutral-600 font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-2 cursor-not-allowed">
-                     <Lock size={14} /> Private
-                </button>
-            )}
+            
+            {/* Removed GitHub Button */}
         </div>
       </div>
     </motion.div>

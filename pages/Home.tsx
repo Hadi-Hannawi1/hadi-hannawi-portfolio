@@ -68,22 +68,6 @@ const Home: React.FC = () => {
                     <p className="text-lg md:text-2xl text-neutral-300 font-light leading-snug mb-8">
                         Creative Developer crafting digital experiences with minimal design and robust engineering.
                     </p>
-                    
-                    {/* Hero Stats */}
-                    <div className="grid grid-cols-3 gap-8 border-t border-neutral-800 pt-8">
-                        <div>
-                            <span className="block text-3xl font-bold text-white mb-1">5</span>
-                            <span className="text-xs text-neutral-500 uppercase tracking-widest">Production Projects</span>
-                        </div>
-                        <div>
-                            <span className="block text-3xl font-bold text-white mb-1">15+</span>
-                            <span className="text-xs text-neutral-500 uppercase tracking-widest">Technologies</span>
-                        </div>
-                        <div>
-                            <span className="block text-3xl font-bold text-white mb-1">100%</span>
-                            <span className="text-xs text-neutral-500 uppercase tracking-widest">Code Quality</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <div className="flex gap-8">
