@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,13 +77,6 @@ const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-             <Link
-                to="/admin"
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-neutral-500 mt-8"
-              >
-                Admin
-              </Link>
           </div>
         </div>
       )}

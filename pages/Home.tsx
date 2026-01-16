@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDownRight, ArrowRight } from 'lucide-react';
+import { ArrowDownRight, ArrowRight, Code, Layers, Zap } from 'lucide-react';
 import Hero3D from '../components/Hero3D';
 import ProjectCard from '../components/ProjectCard';
 import { getProjects, getCategories } from '../services/dataService';
@@ -15,8 +15,10 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const data = getProjects();
-    setProjects(data);
-    setFilteredProjects(data);
+    // Sort by order
+    const sortedData = data.sort((a, b) => (a.order || 99) - (b.order || 99));
+    setProjects(sortedData);
+    setFilteredProjects(sortedData);
     
     // Get managed categories
     const storedCats = getCategories();
@@ -41,7 +43,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative h-screen min-h-[600px] flex flex-col justify-center px-6 md:px-12 overflow-hidden">
+      <section className="relative h-screen min-h-[700px] flex flex-col justify-center px-6 md:px-12 overflow-hidden">
         <Hero3D />
         
         <div className="relative z-10 max-w-7xl mx-auto w-full pt-20">
@@ -62,10 +64,26 @@ const Home: React.FC = () => {
                 transition={{ delay: 0.5, duration: 1 }}
                 className="flex flex-col md:flex-row justify-between items-start md:items-end mt-8 md:mt-24 gap-8 md:gap-12"
             >
-                <div className="max-w-md">
-                    <p className="text-lg md:text-2xl text-neutral-300 font-light leading-snug">
+                <div className="max-w-xl">
+                    <p className="text-lg md:text-2xl text-neutral-300 font-light leading-snug mb-8">
                         Creative Developer crafting digital experiences with minimal design and robust engineering.
                     </p>
+                    
+                    {/* Hero Stats */}
+                    <div className="grid grid-cols-3 gap-8 border-t border-neutral-800 pt-8">
+                        <div>
+                            <span className="block text-3xl font-bold text-white mb-1">5</span>
+                            <span className="text-xs text-neutral-500 uppercase tracking-widest">Production Projects</span>
+                        </div>
+                        <div>
+                            <span className="block text-3xl font-bold text-white mb-1">15+</span>
+                            <span className="text-xs text-neutral-500 uppercase tracking-widest">Technologies</span>
+                        </div>
+                        <div>
+                            <span className="block text-3xl font-bold text-white mb-1">100%</span>
+                            <span className="text-xs text-neutral-500 uppercase tracking-widest">Code Quality</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <div className="flex gap-8">
@@ -95,7 +113,7 @@ const Home: React.FC = () => {
                         onClick={() => setFilter(cat)}
                         className={`text-sm uppercase tracking-widest transition-all whitespace-nowrap ${
                             filter === cat 
-                            ? 'text-white border-b border-white pb-1' 
+                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 border-b border-purple-400 pb-1 font-bold' 
                             : 'text-neutral-600 hover:text-neutral-400'
                         }`}
                     >
@@ -105,12 +123,10 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-24">
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
                 {filteredProjects.map((project, idx) => (
-                <div key={project.id} className={idx % 2 !== 0 ? 'md:mt-24' : ''}>
-                     <ProjectCard project={project} index={idx} />
-                </div>
+                    <ProjectCard key={project.id} project={project} index={idx} />
                 ))}
             </AnimatePresence>
           </motion.div>
@@ -124,17 +140,22 @@ const Home: React.FC = () => {
                  <h2 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-8">About Me</h2>
             </div>
             <div className="md:col-span-8">
-                <p className="text-3xl md:text-5xl font-light leading-tight mb-12 text-neutral-200">
+                <p className="text-3xl md:text-5xl font-light leading-tight mb-12 text-neutral-200 text-balance">
                     I believe in the power of simplicity. My goal is to remove the noise and focus on what truly matters: functionality, performance, and aesthetic clarity.
                 </p>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mt-16 md:mt-24">
-                    {SKILLS.map((skillGroup) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mt-16 md:mt-24">
+                    {SKILLS.map((skillGroup, idx) => (
                         <div key={skillGroup.category}>
-                            <h4 className="text-xs text-neutral-500 uppercase tracking-widest mb-6">{skillGroup.category}</h4>
+                            <div className="mb-6 text-purple-400">
+                                {idx === 0 && <Code size={24} />}
+                                {idx === 1 && <Zap size={24} />}
+                                {idx === 2 && <Layers size={24} />}
+                            </div>
+                            <h4 className="text-xs text-white uppercase tracking-widest mb-6 font-bold">{skillGroup.category}</h4>
                             <ul className="space-y-3">
                                 {skillGroup.items.map(item => (
-                                    <li key={item} className="text-neutral-300 font-light text-sm md:text-base">{item}</li>
+                                    <li key={item} className="text-neutral-400 font-light text-sm md:text-base hover:text-white transition-colors cursor-default">{item}</li>
                                 ))}
                             </ul>
                         </div>
@@ -169,7 +190,7 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-neutral-900/50 p-6 md:p-12">
+            <div className="bg-neutral-900/50 p-6 md:p-12 border border-neutral-900">
               <form 
                 action="https://formsubmit.co/hadi.hennawi2005@gmail.com" 
                 method="POST"

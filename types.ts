@@ -2,12 +2,16 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: string; // New field for filtering
+  category: string;
   technologies: string[];
   imageUrl: string;
   liveUrl?: string;
   repoUrl?: string;
   featured: boolean;
+  problem?: string;
+  solution?: string;
+  results?: string[];
+  order?: number;
 }
 
 export interface SocialLink {
