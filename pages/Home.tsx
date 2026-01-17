@@ -176,7 +176,7 @@ const Home: React.FC = () => {
 
             <div className="bg-neutral-900/50 p-6 md:p-12 border border-neutral-900">
               <form 
-                action="https://formsubmit.co/hadi.hennawi2005@gmail.com" 
+                action="https://formsubmit.co/h.hannawi1@gmail.com" 
                 method="POST"
                 className="space-y-8"
               >
@@ -231,7 +231,6 @@ const Home: React.FC = () => {
       <footer className="py-8 px-6 md:px-12 border-t border-neutral-900 bg-black">
         <div className="flex flex-col md:flex-row gap-4 justify-between items-center max-w-7xl mx-auto">
             <span className="text-xs text-neutral-600 uppercase tracking-widest">Hadi Hannawi © {new Date().getFullYear()}</span>
-            <span className="text-xs text-neutral-600 uppercase tracking-widest">Montreal, QC</span>
         </div>
       </footer>
     </div>

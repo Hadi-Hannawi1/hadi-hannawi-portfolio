@@ -167,5 +167,5 @@ export const SKILLS: Skill[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { platform: 'LinkedIn', url: 'https://linkedin.com/in/hadi-hannawi', icon: 'linkedin' },
-  { platform: 'Email', url: 'mailto:contact@hadi-hannawi.com', icon: 'mail' },
+  { platform: 'Email', url: 'mailto:h.hannawi1@gmail.com', icon: 'mail' },
 ];
