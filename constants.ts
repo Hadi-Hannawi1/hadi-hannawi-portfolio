@@ -46,6 +46,26 @@ export const INITIAL_PROJECTS: Project[] = [
     ]
   },
   {
+    id: '8',
+    title: 'Café Ordering System',
+    description: 'A complete café ordering system demo featuring QR code-based table ordering, real-time kitchen display, and order management. Built with Next.js 14, Tailwind CSS, and Zustand for state management.',
+    category: 'Restaurants',
+    technologies: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Zustand'],
+    imageUrl: '/images/cafe-qr-demo.jpg',
+    liveUrl: 'https://cafes-qrcode-demo.netlify.app/',
+    repoUrl: '',
+    featured: true,
+    order: 3,
+    problem: 'Cafés require efficient, real-time systems to handle orders during peak hours without overwhelming staff.',
+    solution: 'Built a high-performance ordering application using Next.js and Zustand to synchronize state instantly between tables and the kitchen.',
+    results: [
+      'Real-time kitchen display updates',
+      'Seamless QR code integration',
+      'Instant state synchronization',
+      'Optimized for mobile devices'
+    ]
+  },
+  {
     id: '6',
     title: 'QR Table Ordering System',
     description: 'Integrated restaurant system where customers scan table-specific QR codes to place orders directly. Orders are instantly routed to a real-time kitchen display page for preparation.',
@@ -55,7 +75,7 @@ export const INITIAL_PROJECTS: Project[] = [
     liveUrl: 'https://qr-code-system-demo.netlify.app/',
     repoUrl: '',
     featured: true,
-    order: 3,
+    order: 4,
     problem: 'Traditional order taking was slow and prone to errors during peak hours, causing kitchen bottlenecks.',
     solution: 'Created a direct-to-kitchen ordering flow using unique table QR codes, allowing guests to order immediately and reducing staff workload.',
     results: [
@@ -75,7 +95,7 @@ export const INITIAL_PROJECTS: Project[] = [
     liveUrl: 'https://quitsmoke-beta.netlify.app/',
     repoUrl: '',
     featured: true,
-    order: 4,
+    order: 5,
     problem: 'Quitting smoking is a complex challenge where generic advice often fails. Smokers need personalized structure and tangible visualization of their progress.',
     solution: 'Developed an intelligent dashboard that tracks smoke-free streaks, calculates money saved, and provides health recovery milestones based on time elapsed.',
     results: [
@@ -96,7 +116,7 @@ export const INITIAL_PROJECTS: Project[] = [
     liveUrl: 'https://digital-growth-studio.netlify.app/',
     repoUrl: 'https://github.com/hadi-hannawi1/portfolio-projects/tree/main/business-landing',
     featured: true,
-    order: 5,
+    order: 6,
     problem: 'Agency needed a professional online presence to convert visitors into leads.',
     solution: 'Designed and developed a modern, mobile-first landing page with compelling copy, smooth animations, and clear CTAs.',
     results: [
@@ -117,7 +137,7 @@ export const INITIAL_PROJECTS: Project[] = [
     liveUrl: '', // Internal system
     repoUrl: '', // Private repo
     featured: true,
-    order: 6,
+    order: 7,
     problem: 'Manual email processing slowed response times and overwhelmed support teams.',
     solution: 'Built automated AI-powered email response system using n8n workflows integrated with Gemini AI for intelligent content generation.',
     results: [
@@ -138,7 +158,7 @@ export const INITIAL_PROJECTS: Project[] = [
     liveUrl: 'https://smart-form-processor.netlify.app/',
     repoUrl: 'https://github.com/hadi-hannawi1/portfolio-projects/tree/main/smart-form',
     featured: true,
-    order: 7,
+    order: 8,
     problem: 'Standard single-page forms had 75% abandonment rate.',
     solution: 'Built intuitive multi-step form with progress indicators, auto-save functionality, and real-time validation feedback.',
     results: [
